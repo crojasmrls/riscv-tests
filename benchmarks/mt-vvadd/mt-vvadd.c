@@ -50,6 +50,8 @@ void thread_entry(int cid, int nc)
    static data_t results_data[DATA_SIZE];
    
    // First do out-of-place vvadd
+
+   if(cid == 0) printf("Independent memory destination C = A + B");
    barrier(nc);
    stats(vvadd(cid, nc, DATA_SIZE, input1_data, input2_data, results_data); barrier(nc), DATA_SIZE);
  
@@ -65,6 +67,8 @@ void thread_entry(int cid, int nc)
      for (i = 0; i < DATA_SIZE; i++)
            results_data[i] = input1_data[i];
    }
+
+   if(cid == 0) printf("Reuse of memory destination A = A + B");
    barrier(nc);
    stats(vvadd(cid, nc, DATA_SIZE, results_data, input2_data, results_data); barrier(nc), DATA_SIZE);
  

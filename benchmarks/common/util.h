@@ -78,13 +78,19 @@ static uintptr_t insn_len(uintptr_t pc)
 
 #define stringify_1(s) #s
 #define stringify(s) stringify_1(s)
+
+//   iter in this case refers to the numer of element in the vector (DATASIZE)
+// read cycles and intructions before executing the code
+// calculate the cycles and that the code takes
+// the modulo operations is because is not posible 
+// to print floats
 #define stats(code, iter) do { \
     unsigned long _c = -read_csr(mcycle), _i = -read_csr(minstret); \
     code; \
     _c += read_csr(mcycle), _i += read_csr(minstret); \
     if (cid == 0) \
-      printf("\n%s: %ld cycles, %ld.%ld cycles/iter, %ld.%ld CPI\n", \
-             stringify(code), _c, _c/iter, 10*_c/iter%10, _c/_i, 10*_c/_i%10); \
+      printf("\n%s: %ld cycles, %ld.%ld cycles/iter, %ld.%ld CPI, Num-Executed_Inst %ld\n", \
+             stringify(code), _c, _c/iter, 10*_c/iter%10, _c/_i, 10*_c/_i%10,_i); \
   } while(0)
 
 #endif //__UTIL_H
