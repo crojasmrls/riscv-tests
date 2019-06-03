@@ -28,6 +28,11 @@ bmarks = \
 	dhrystone \
 	spmv \
 	mt-vvadd \
+	mt-vvadd0 \
+	mt-vvadd1 \
+	mt-vvadd2 \
+	mt-vvadd3 \
+	mt-vvadd4 \
 	mt-matmul \
 	pmp \
 
