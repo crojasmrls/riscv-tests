@@ -50,7 +50,10 @@ void thread_entry(int cid, int nc)
    static data_t results_data[DATA_SIZE];
    
    // First do out-of-place vvadd
-
+   if (cid==0)
+   {
+     printf("\nNCORES = %d\n", nc);
+   }
    if(cid == 0) printf("Independent memory destination C = A + B");
    barrier(nc);
    stats(vvadd(cid, nc, DATA_SIZE, input1_data, input2_data, results_data); barrier(nc), DATA_SIZE);

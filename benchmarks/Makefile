@@ -3,7 +3,7 @@
 #-----------------------------------------------------------------------
 # Yunsup Lee (yunsup@cs.berkeley.edu)
 #
-
+NCORES = 1
 XLEN ?= 64
 
 default: all
@@ -98,6 +98,10 @@ install-link:
 
 #------------------------------------------------------------
 # Clean up
+copy:riscv
+	cp -r mt-vvadd* ../../../emulator/benchmarks/nCores$(NCORES)/
+
+PHONY: copy
 
 clean:
 	rm -rf $(objs) $(junk)

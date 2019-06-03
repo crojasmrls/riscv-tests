@@ -48,7 +48,10 @@ void thread_entry(int cid, int nc)
 {
    // static allocates data in the binary, which is visible to both threads
    static data_t results_data[DATA_SIZE];
-   
+      if (cid==0)
+   {
+     printf("\nNCORES = %d\n", nc);
+   }
    // First do out-of-place vvadd0
 
    if(cid == 0) printf("Independent memory destination C = A + B");
